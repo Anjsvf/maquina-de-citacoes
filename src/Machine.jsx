@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+// Machine.js
 
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import "./Machinestyle.css";
 
 const quotes = [
-    { text: "''A verdadeira coragem é ser honesto consigo mesmo'' ", author: "Mr-Robot" },
+    { text: "''A verdadeira coragem é ser honesto consigo mesmo''", author: "Mr-Robot" },
     { text: "''Não é a linguagem de programação que define o programador, mas sim sua lógica.''", author: "David Ribeiro Guilherme" },
     { text: "''Faça como um programador. Quando tudo está errado e confuso, apague tudo e recomece do zero.''", author: "David Ribeiro Guilherme" },
-    { text: "''Linguagens não morrem mas sim seus programadores.'", author: "Thales de Oliveira Gomes" },
+    { text: "''Linguagens não morrem mas sim seus programadores.''", author: "Thales de Oliveira Gomes" },
     { text: "''Nunca houve um inesperadamente Período de depuração curto na história dos computadores.''", author: "Steven levy" },
     { text: "''Tudo bem para descobrir mistérios de assassinato, mas você não deve precisar descobrir o código. Você deve ser capaz de lê-lo''", author: "Steve mcConnell " },
     { text: "''Trabalha com gosto e terás o gosto do trabalho''", author: "Benjamin Franklin" },
     { text: "''Há engenheiros de software e pedreiros de software''", author: "Danilo Gomes" },
     { text: "''Nunca ande por trilhas, pois assim só irá até onde outros já foram''", author: "Alexander Graham Bell" },
-  
 ];
 
-function Machine() {
+const Machine = () => {
     const [quoteIndex, setQuoteIndex] = useState(0);
 
     const getRandomQuote = () => {
@@ -32,7 +32,6 @@ function Machine() {
     };
 
     useEffect(() => {
-     
         getRandomQuote();
     }, []);
 
@@ -41,12 +40,15 @@ function Machine() {
             <div id="quote-box">
                 <div id="text">{quotes[quoteIndex].text}</div>
                 <div id="author">- {quotes[quoteIndex].author}</div>
-                <button id="new-quote" onClick={getRandomQuote}>Nova Citacão</button>
-                <a id="tweet-quote" href="#" target="_blank" onClick={tweetQuote}>Tweetar Citação</a>
+                <button id="new-quote" onClick={getRandomQuote}>Nova Citação</button>
+                <a id="tweet-quote" href="#" onClick={tweetQuote}>Tweetar Citação</a>
             </div>
         </div>
     );
-}
+};
 
+Machine.propTypes = {
+    // Add prop types if needed
+};
 
-export default Machine
+export default Machine;
